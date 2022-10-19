@@ -77,16 +77,17 @@ class Booking_Ikeja():
         server.ehlo()
         server.starttls()
         server.ehlo()
-        server.login('ogwujessica2222@gmail.com', 'Jersika790')
+        server.login('email', '')
         names=lst[0]
         name=names['address']
-        body=name
+        body=f'Your address is {name}.'
         server.sendmail(
-            'ogwujessica2016@gmail.com',
+            'sender',
+            'receiver',
             body
         )
         server.quit()
-          
+       
         
         
 
