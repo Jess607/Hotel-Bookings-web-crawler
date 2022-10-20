@@ -4,7 +4,8 @@ import os
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.remote.webdriver import WebDriver
-from hotels.constant import LAGOS_CITIES
+from hotels.constant import EMAIL 
+from hotels.constant import PASSWORD 
 
 class Booking_Ikeja():
     def __init__(self, driver:WebDriver):
@@ -71,20 +72,23 @@ class Booking_Ikeja():
         return lis
 
 
-    def send_email(self):
+    def send_email(self, email):
         lst=self.get_hotels()
         server=smtplib.SMTP('smtp.gmail.com', 587)
         server.ehlo()
         server.starttls()
         server.ehlo()
-        server.login('email', '')
-        names=lst[0]
-        name=names['address']
-        body=f'Your address is {name}.'
+        server.login( f'{EMAIL}', f'{PASSWORD}')
+        body=''
+        for i in lst:
+            body= body + 'Hotel name:' f'{i["name"]}' + '\n' + 'Address:' f'{i["address"]}' + '\n'+ 'Price:' + f'{i["price"][1:]}' +' ' + 'Naira' + '\n' + 'Ratings:' f'{i["ratings"]}' + '\n' + 'Book here:' f'{i["web"]}' + '\n' + '\n'
+        subject= 'Hotels In Ikeja'
+        main_body= "Here's what we found for you!" + '\n' + '\n' + f'{body}'
+        message = f"Subject : {subject}\n\n{main_body}"
         server.sendmail(
-            'sender',
-            'receiver',
-            body
+            f'{EMAIL}',
+            f'{email}',
+            message
         )
         server.quit()
        
