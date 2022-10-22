@@ -24,7 +24,7 @@ After crawling and scraping, the hotels found are sent to the user via email  wi
 
 # File Description 
 The project contains an `hotels` folder that holds four python files used to create the automation task. `Bookings.py` is the main class file that contains the three methods for usage. There are three other files present which `Bookings.py` has inherited methods from for creation of the main methods. 
-Utilization of the method may be carried out in main.py by importing the bookings class from bookings.py and calling the necessary methods with the necessary arguments. This may be carried out on a local machine.
+Utilization of the method may be carried out in main.py by importing the bookings class from bookings.py module and calling the necessary methods with the necessary arguments. This may be carried out on a local machine.
 
 # Licensing And Authoring
 This code was created by Jessica Ogwu and is protected under the GNU General Public License. Please feel free to use it in your own projects.
